@@ -69,7 +69,7 @@ export default (env: Record<string, any>): Configuration => {
       rules: [
         {
           test: /\.(tsx?|js)$/,
-          exclude: /node_modules/,
+          exclude: [/node_modules/, /packages/],
           use: [
             {
               loader: 'babel-loader',
@@ -172,7 +172,7 @@ export default (env: Record<string, any>): Configuration => {
             },
           ],
         }),
-      env.manifest && new WebpackManifestPlugin(),
+      env.manifest && new WebpackManifestPlugin({}),
     ].filter(Boolean),
   }
 }

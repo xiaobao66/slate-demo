@@ -13,12 +13,10 @@ interface DevConfigure extends Configuration {
 }
 
 export default (env: Record<string, any>): DevConfigure => {
-  const isHot = !!env.hot
-
   const devConfig = {
     mode: 'development' as DevConfigure['mode'],
     entry: {
-      index: resolve(CLIENT_ROOT, 'index.ts'),
+      index: resolve(CLIENT_ROOT, 'index.tsx'),
     },
     output: {
       publicPath: '',
@@ -30,7 +28,7 @@ export default (env: Record<string, any>): DevConfigure => {
     devtool: 'inline-source-map',
 
     plugins: [
-      isHot && new ReactRefreshWebpackPlugin(),
+      new ReactRefreshWebpackPlugin(),
       new HtmlWebpackPlugin({
         title: 'slate demo',
         template: resolve(CLIENT_ROOT, 'index.ejs'),
@@ -47,7 +45,7 @@ export default (env: Record<string, any>): DevConfigure => {
 
     devServer: {
       port: Number(env.port || 9090),
-      hot: isHot,
+      hot: true,
       allowedHosts: 'all',
       client: {
         overlay: true,
