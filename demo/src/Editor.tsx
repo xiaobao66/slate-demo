@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
-import { createEditor } from 'slate'
-import { Slate, Editable, withReact } from 'slate-react'
+import { createEditor, BaseEditor } from 'slate'
+import { Slate, Editable, withReact, ReactEditor } from 'slate-react'
+
+declare module 'slate' {
+  interface CustomTypes {
+    Editor: BaseEditor & ReactEditor
+  }
+}
 
 const initialValue = [
   {
