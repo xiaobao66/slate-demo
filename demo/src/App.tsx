@@ -1,21 +1,20 @@
-import React, { useState } from 'react'
-import { createEditor } from 'slate'
-import { Slate, Editable, withReact } from 'slate-react'
-
-const initialValue = [
-  {
-    type: 'paragraph',
-    children: [{ text: 'A line of text in a paragraph.' }],
-  },
-]
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Editor } from './Editor'
+import { Test } from './Test'
 
 function App() {
-  const [editor] = useState(() => withReact(createEditor()))
-
   return (
-    <Slate editor={editor} value={initialValue}>
-      <Editable />
-    </Slate>
+    <Router>
+      <Switch>
+        <Route path={'/editor'}>
+          <Editor />
+        </Route>
+        <Route path={'/test'}>
+          <Test />
+        </Route>
+      </Switch>
+    </Router>
   )
 }
 
