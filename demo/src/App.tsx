@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { Editor } from './Editor'
-import { Test } from './Test'
+import { Editor } from './routes/Editor'
+import { Test } from './routes/Test'
 
 function App() {
   return (
